@@ -28,28 +28,28 @@ end
 
 % Plots
 subplot(2,2,1)
-plot(timestamps, potential(1:end-1));
+plot(timestamps, potential(1:end-1), "b");
 title("Dendritischen Potenzial an Neuron 1");
 ylabel("t")
 xlabel("u_1(t)")
 
 subplot(2,2,3)
-plot(timestamps, derivative);
+plot(timestamps, derivative, "b");
 title("Ableitung des dendritischen Potenzial an Neuron 1");
 ylabel("t")
-xlabel("\dot(u)_1(t)")
+xlabel("u_1'(t)")
 
 subplot(2,2,2)
-plot(timestamps, potential2(1:end-1));
+plot(timestamps, potential2(1:end-1), "g");
 title("Dendritischen Potenzial an Neuron 2");
 ylabel("t")
 xlabel("u_2(t)")
 
 subplot(2,2,4)
-plot(timestamps, derivative2);
+plot(timestamps, derivative2, "g");
 title("Ableitung des dendritischen Potenzial an Neuron 2");
 ylabel("t")
-xlabel("\dot(u)_2(t)")
+xlabel("u_2'(t)")
 
-% Save the file to include it in the pdf
-%print('Plot','-depsc')
+% Save the file
+print('Plot','-depsc')

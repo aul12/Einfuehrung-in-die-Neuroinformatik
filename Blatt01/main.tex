@@ -84,7 +84,7 @@
         \item Plots:
             \begin{figure}[H]
                 \centering
-                \includegraphics[trim = 0 0 10 10,width=\textwidth]{Plot}
+                \includegraphics[trim = {0 9cm 27cm 0}, clip,width=\textwidth]{Plot}
                 \caption{Dendritischen Potentiale und deren jeweilige Ableitungen}
             \end{figure} 
 
@@ -95,6 +95,16 @@
     \begin{enumerate}[label=(\alph*)]
         \item Mit steigender Zeitkonstante nimmt die Flankensteigung am Ausgang ab, das Neuron reagiert langsamer.
             Bei geringerer Zeitkonstante reagiert das Neuron schneller. %TODO Bilder
+            \begin{figure}[H]
+                \centering
+                \includegraphics[trim = {0 9cm 27cm 0}, clip,width=\textwidth]{Plot_tau05}
+                \caption{Dendritischen Potentiale und deren jeweilige Ableitungen mit $\tau=0.5$}
+            \end{figure} 
+            \begin{figure}[H]
+                \centering
+                \includegraphics[trim = {0 9cm 27cm 0}, clip,width=\textwidth]{Plot_tau2}
+                \caption{Dendritischen Potentiale und deren jeweilige Ableitungen mit $\tau=2$}
+            \end{figure} 
         \item           
             Erstes Neuron:
             \begin{eqnarray*}
