@@ -7,6 +7,29 @@
 \usepackage[utf8]{inputenc} % this is needed for umlauts
 \usepackage[ngerman]{babel} % this is needed for umlauts
 \usepackage[T1]{fontenc} 
+\usepackage{pgfplots}
+\usepackage{xcolor}
+\usepackage{listings}
+
+\definecolor{mygreen}{RGB}{28,172,0} % color values Red, Green, Blue
+\definecolor{mylilas}{RGB}{170,55,241}
+
+\lstset{language=Matlab,%
+    %basicstyle=\color{red},
+    breaklines=true,%
+    morekeywords={matlab2tikz},
+    keywordstyle=\color{blue},%
+    morekeywords=[2]{1}, keywordstyle=[2]{\color{black}},
+    identifierstyle=\color{black},%
+    stringstyle=\color{mylilas},
+    commentstyle=\color{mygreen},%
+    showstringspaces=false,%without this there will be a symbol in the places where there is a space
+    numbers=left,%
+    numberstyle={\tiny \color{black}},% size of the numbers
+    numbersep=9pt, % this defines how far the numbers are from the text
+    emph=[1]{for,end,break},emphstyle=[1]\color{red}, %some words to emphasise
+    %emph=[2]{word1,word2}, emphstyle=[2]{style},    
+}
 
 \title{Einführung in die Neuroinformatik}
 \author{Tim Luchterhand, Paul Nykiel}
@@ -16,7 +39,7 @@
     \section{Aufgabe}
     \subsection{DGL}
     \begin{equation*}
-        \tau \dot{u}_j(t) = -u_j(t) + \sum_{i=1}^n c_{ij} y_i(t-d_{ij}) + x_j(t)
+        \tau \dot{u}_j(t) = -u_j(t) + \sum_{i=1}^n c_{ij} \cdot y_i(t-d_{ij}) + x_j(t)
     \end{equation*}
     Erstes Neuron:
     \begin{equation*}
@@ -27,5 +50,26 @@
         \tau \dot{u}_2(t) = -u_2(t) + 0.8 u_1(t) 
     \end{equation*}
     \subsection{Verlauf}
+    \begin{tikzpicture}
+        \begin{axis}[ 
+            xlabel=$t$,
+            ylabel={$y_i(t)$},
+            xmin=0,
+            xmax=30,
+            ymin=0,
+            ymax=1,
+            width=\textwidth,
+            height=5cm,
+            thick,
+        ] 
+            \addplot [domain=0:30, color=blue, samples=1000]{x/30};
+            \addlegendentry{$y_1(t)$}
+            \addplot [domain=0:30, color=green, samples=1000]{x/60};
+            \addlegendentry{$y_2(t)$}
+        \end{axis}
+    \end{tikzpicture} 
+    \subsection{Maximum}
 
+    \subsection{Matlab}
+    \lstinputlisting{b01a01.m}
 \end{document}
