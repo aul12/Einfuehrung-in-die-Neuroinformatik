@@ -11,24 +11,28 @@ input(find(timestamps >= 5 & timestamps <= 15)) = 1;
 % Allocate memory
 derivative = zeros(1,length(timestamps));
 derivative2 = zeros(1,length(timestamps));
-potential = zeros(1,length(timestamps)+1);
-potential2 = zeros(1,length(timestamps)+1);
+potential = zeros(1,length(timestamps));
+potential2 = zeros(1,length(timestamps));
 
 % First neuron
 for c = 1:length(timestamps)
     derivative(c) = (-potential(c) + input(c))/tau;
-    potential(c+1) = potential(c) + deltaT * derivative(c);
+    if c ~= length(timestamps)
+        potential(c+1) = potential(c) + deltaT * derivative(c);
+    end
 end
 
 % Second neuron
 for c = 1:length(timestamps)
     derivative2(c) = (-potential2(c) + 0.8 * potential(c))/tau;
-    potential2(c+1) = potential2(c) + deltaT * derivative2(c);
+    if c ~= length(timestamps)
+        potential2(c+1) = potential2(c) + deltaT * derivative2(c);
+    end
 end
 
 % Plots
 subplot(2,2,1)
-plot(timestamps, potential(1:end-1), "b");
+plot(timestamps, potential, "b");
 title("Dendritischen Potenzial an Neuron 1");
 ylabel("t")
 xlabel("u_1(t)")
@@ -40,7 +44,7 @@ ylabel("t")
 xlabel("u_1'(t)")
 
 subplot(2,2,2)
-plot(timestamps, potential2(1:end-1), "g");
+plot(timestamps, potential2, "g");
 title("Dendritischen Potenzial an Neuron 2");
 ylabel("t")
 xlabel("u_2(t)")
