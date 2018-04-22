@@ -72,8 +72,9 @@
             \addlegendentry{$y_2(t)$}
         \end{axis}
     \end{tikzpicture} 
-    \subsection{Maximum}
-
+    \subsection{Maximum} %TODO Mehr Text
+    Erstes Neuron: $\max(y_1(t)) = 1$, da der maximale Eingangswert $\max(x_1(t)) = 1$ und das Neuron keine Energie erzeugt. 
+    Zweites Neuron: $\max(y_2(t)) = 0.8$, da der maximale Eingangswert $\max(u_1(t)) = 0.8$ und das Neuron keine Energie erzeugt. 
 
     \subsection{Matlab}
     \begin{enumerate}[label=(\alph*)]
@@ -87,8 +88,29 @@
                 \caption{Dendritischen Potentiale und deren jeweilige Ableitungen}
             \end{figure} 
 
-        \item Ab $t=15$ fallen die Funktionswerte wieder ab, so dass sie für $t \to \infty$ wieder bei $0$ sind...
+        \item Ab $t=15$ fallen die Funktionswerte wieder ab, so dass sie für $t \to \infty$ wieder bei $0$ sind...%TODO Mehr Text
     \end{enumerate}
 
     \subsection{Zeitkonstante}
+    \begin{enumerate}[label=(\alph*)]
+        \item Mit steigender Zeitkonstante nimmt die Flankensteigung am Ausgang ab, das Neuron reagiert langsamer.
+            Bei geringerer Zeitkonstante reagiert das Neuron schneller. %TODO Bilder
+        \item           
+            Erstes Neuron:
+            \begin{eqnarray*}
+                0 \cdot \dot{u}_1(t) &=& -u_1(t) + x_1(t) \\
+                \Leftrightarrow u_1(t) &=& x_1(t) 
+            \end{eqnarray*}
+            Zweites Neuron:
+            \begin{eqnarray*}
+                0 \cdot \dot{u}_2(t) &=& -u_2(t) + 0.8 u_1(t) \\
+                u_2(t) &=& 0.8 u_1(t) 
+            \end{eqnarray*}
+            Für $\tau = 0$ ist die Flankensteigung unendlich hoch und das Eingangssignal wird unverändert vom
+            Neuron wieder ausgegeben, beziehungsweise nur skaliert.
+    \end{enumerate}
+
+    \subsection{Übertragungszeit}
+    Eine Übertragungszeit führt dazu das die Antwort des zweiten Neurons auf das Signal des ersten Neurons verzögert
+    wird, das heißt $u_2(t)$ wird nach rechts verschoben.
 \end{document}

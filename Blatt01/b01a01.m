@@ -16,13 +16,13 @@ potential2 = zeros(1,length(timestamps)+1);
 
 % First neuron
 for c = 1:length(timestamps)
-    derivative(c) = -potential(c) + input(c);
+    derivative(c) = (-potential(c) + input(c))/tau;
     potential(c+1) = potential(c) + deltaT * derivative(c);
 end
 
 % Second neuron
 for c = 1:length(timestamps)
-    derivative2(c) = -potential2(c) + 0.8 * potential(c);
+    derivative2(c) = (-potential2(c) + 0.8 * potential(c))/tau;
     potential2(c+1) = potential2(c) + deltaT * derivative2(c);
 end
 
@@ -52,4 +52,4 @@ ylabel("t")
 xlabel("\dot(u)_2(t)")
 
 % Save the file to include it in the pdf
-print('Plot','-depsc')
+%print('Plot','-depsc')
