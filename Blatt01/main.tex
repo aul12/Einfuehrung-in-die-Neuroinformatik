@@ -14,4 +14,18 @@
 \begin{document}
     \maketitle
     \section{Aufgabe}
+    \subsection{DGL}
+    \begin{equation*}
+        \tau \dot{u}_j(t) = -u_j(t) + \sum_{i=1}^n c_{ij} y_i(t-d_{ij}) + x_j(t)
+    \end{equation*}
+    Erstes Neuron:
+    \begin{equation*}
+        \tau \dot{u}_1(t) = -u_1(t) + x_1(t)
+    \end{equation*}
+    Zweites Neuron:
+    \begin{equation*}
+        \tau \dot{u}_2(t) = -u_2(t) + 0.8 u_1(t) 
+    \end{equation*}
+    \subsection{Verlauf}
+
 \end{document}
