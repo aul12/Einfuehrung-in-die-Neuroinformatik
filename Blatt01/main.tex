@@ -4,12 +4,14 @@
 \usepackage{amsfonts}
 \usepackage{amssymb}
 \usepackage{enumitem}
-\usepackage[utf8]{inputenc} % this is needed for umlauts
-\usepackage[ngerman]{babel} % this is needed for umlauts
+\usepackage[utf8]{inputenc} 
+\usepackage[ngerman]{babel} 
 \usepackage[T1]{fontenc} 
 \usepackage{pgfplots}
 \usepackage{xcolor}
 \usepackage{listings}
+\usepackage{float}
+\usepackage{graphicx}
 
 \definecolor{mygreen}{RGB}{28,172,0} % color values Red, Green, Blue
 \definecolor{mylilas}{RGB}{170,55,241}
@@ -75,6 +77,9 @@
     \lstinputlisting{b01a01.m}
     
     Plots:
-    
+    \begin{figure}[H]
+        \includegraphics[width=\textwidth]{Plot}
+        \caption{Dendritischen Potentiale und deren jeweilige Ableitungen}
+    \end{figure} 
 
 \end{document}
