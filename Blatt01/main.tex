@@ -64,13 +64,16 @@
             height=5cm,
             thick,
         ] 
-            \addplot [domain=0:30, color=blue, samples=1000]{x/30};
+            \addplot [domain=0:15, color=blue, samples=1000]{1-e^(5-x)};
+            \addplot [domain=15:30, color=blue, samples=1000, forget plot]{e^(15-x)};
             \addlegendentry{$y_1(t)$}
-            \addplot [domain=0:30, color=green, samples=1000]{x/60};
+            \addplot [domain=0:15, color=green, samples=1000]{0.8*(1-e^(5-x))};
+            \addplot [domain=15:30, color=green, samples=1000, forget plot]{0.8*(e^(15-x))};
             \addlegendentry{$y_2(t)$}
         \end{axis}
     \end{tikzpicture} 
     \subsection{Maximum}
+
 
     \subsection{Matlab}
     \begin{enumerate}[label=(\alph*)]

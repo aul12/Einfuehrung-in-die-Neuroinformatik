@@ -5,8 +5,10 @@ before_install:
 
 script:
     - mkdir output
-    - latexmk -pdf Blatt01/main.tex
-    - mv main.pdf output/Blatt01.pdf
+    - cd Blatt01
+    - latexmk -pdf main.tex
+    - mv main.pdf ..output/Blatt01.pdf
+    - cd ..
 
 deploy:
     provider: pages
