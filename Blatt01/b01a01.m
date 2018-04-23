@@ -54,6 +54,3 @@ plot(timestamps, derivative2, "g");
 title("Ableitung des dendritischen Potenzial an Neuron 2");
 ylabel("t")
 xlabel("u_2'(t)")
-
-% Save the file
-print('Plot','-depsc')
