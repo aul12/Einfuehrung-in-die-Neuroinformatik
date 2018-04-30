@@ -40,7 +40,7 @@
 \begin{document}
     \maketitle
     \section{Boole'sche Funktionen}
-    \subsection{Logische Funktionen}
+    \subsection{}
     \begin{enumerate}[label = (\alph*)]
         \item AND-Gatter
             \begin{eqnarray*}
@@ -57,11 +57,38 @@
                 \theta &=& 1
             \end{eqnarray*}
     \end{enumerate}
-    \subsection{Eindeutigkeit}
+    \subsection{}
     Nein, da der Vektor $w$ und $\theta$ zum Beispiel jeweils mit einem Skalar skaliert werden können.
-    \subsection{Beispiel}
+    \subsection{}
     \begin{enumerate}[label=(\alph*)]
-        \item @TODO Tikz
+        \item $ $
+            \begin{figure}[H]
+                \centering
+                \begin{tikzpicture}
+                    \tikzstyle{neuron}=[circle,fill=black!25,minimum size=24pt,inner sep=0pt]
+
+                    \node[anchor=east] (Wetter) at (0,8) {Wetter};
+                    \node[anchor=east] (Begleitung) at (0,4) {Begleitung};
+                    \node[anchor=east] (Essen) at (0,0) {Essen};
+
+                    \node[neuron] (WetterFilter) at (4,6) {$\geq 1$};
+                    \node[neuron] (Oder) at (4,2) {$\geq 1$};
+
+                    \node[neuron, pin=right:Output] (Und) at (8,4) {$\geq 2$};
+
+                    \path (Wetter) edge[->] node[anchor=south,pos = 0.8]{$1$} (WetterFilter);
+                    \path (Wetter) edge[->] node[anchor=south, pos=0.8]{$0$} (Oder);
+
+                    \path (Begleitung) edge[->] node[anchor=south, pos=0.8]{$1$} (Oder);
+                    \path (Essen) edge[->] node[anchor=south, pos=0.8]{$1$} (Oder);
+
+                    \path (Begleitung) edge[->] node[anchor=south, pos=0.8]{$0$} (WetterFilter);
+                    \path (Essen) edge[->] node[anchor=south, pos=0.8]{$0$} (WetterFilter);
+
+                    \path (WetterFilter) edge[->] node[anchor=south, pos=0.8]{$1$} (Und);
+                    \path (Oder) edge[->] node[anchor=south, pos=0.8]{$1$} (Und);
+                \end{tikzpicture}
+            \end{figure}
         \item 
             \begin{eqnarray*}
                 w &=& \begin{pmatrix}
@@ -71,15 +98,73 @@
             \end{eqnarray*}
     \end{enumerate}
     \section{Schwellwertneuronen}
-    \subsection{Wahrscheinlickeiten}
-    @TODO Tikz
-    \subsection{Ebene im $\mathbb{R}^3$}
+    \subsection{}
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}
+            \tikzstyle{neuron}=[circle,fill=black!25,minimum size=24pt,inner sep=0pt]
+
+            \node[anchor=east] (Wetter) at (0,8) {Wetter};
+            \node[anchor=east] (Begleitung) at (0,4) {Begleitung};
+            \node[anchor=east] (Essen) at (0,0) {Essen};
+
+            \node[neuron] (WetterFilter) at (4,8) {$\geq 0.5$};
+            \node[neuron] (BegleitungFilter) at (4,4) {$\geq 0.25$};
+            \node[neuron] (EssenFilter) at (4,0) {$\geq 0.25$};
+
+            \node[neuron, pin=right:Output] (Output) at (8,4) {$\geq 3$};
+
+            \path (Wetter) edge[->] node[anchor=south,pos = 0.8]{$1$} (WetterFilter);
+            \path (Wetter) edge[->] node[anchor=south, pos=0.8]{$0$} (BegleitungFilter);
+            \path (Wetter) edge[->] node[anchor=south, pos=0.8]{$0$} (EssenFilter);
+
+            \path (Begleitung) edge[->] node[anchor=south,pos = 0.8]{$0$} (WetterFilter);
+            \path (Begleitung) edge[->] node[anchor=south, pos=0.8]{$1$} (BegleitungFilter);
+            \path (Begleitung) edge[->] node[anchor=south, pos=0.8]{$0$} (EssenFilter);
+
+            \path (Essen) edge[->] node[anchor=south,pos = 0.8]{$0$} (WetterFilter);
+            \path (Essen) edge[->] node[anchor=south, pos=0.8]{$0$} (BegleitungFilter);
+            \path (Essen) edge[->] node[anchor=south, pos=0.8]{$1$} (EssenFilter);
+
+            \path (WetterFilter) edge[->] node[anchor=south, pos=0.8]{$2$} (Output);
+            \path (BegleitungFilter) edge[->] node[anchor=south, pos=0.8]{$1$} (Output);
+            \path (EssenFilter) edge[->] node[anchor=south, pos=0.8]{$1$} (Output);
+        \end{tikzpicture}
+    \end{figure}
+    \subsection{}
     \begin{eqnarray*}
         x_1 + x_2 + x_3 &\stackrel{!}{=}& 1 \\ 
         \Leftrightarrow x_1 + x_2 + x_3 \stackrel{!}{\geq} 1 &\land& x_1 + x_2 + x_3 \stackrel{!}{\leq} 1\\
         \Leftrightarrow x_1 + x_2 + x_3 \stackrel{!}{\geq} 1 &\land&  - x_1 - x_2 - x_3 \stackrel{!}{\geq} -1\\
     \end{eqnarray*}
-    TODO Tikz
+    Daraus folgt für das Netz:
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}
+            \tikzstyle{neuron}=[circle,fill=black!25,minimum size=24pt,inner sep=0pt]
+
+            \node[anchor=east] (x1) at (0,8) {$x_1$};
+            \node[anchor=east] (x2) at (0,4) {$x_2$};
+            \node[anchor=east] (x3) at (0,0) {$x_3$};
+
+            \node[neuron] (N1) at (4,6) {$\geq 1$};
+            \node[neuron] (N2) at (4,2) {$\geq -1$};
+
+            \node[neuron, pin=right:Output] (Output) at (8,4) {$\geq 2$};
+
+            \path (x1) edge[->] node[anchor=south,pos = 0.8]{$1$} (N1);
+            \path (x1) edge[->] node[anchor=south,pos = 0.8]{$-1$} (N2);
+
+            \path (x2) edge[->] node[anchor=south,pos = 0.8]{$1$} (N1);
+            \path (x2) edge[->] node[anchor=south,pos = 0.8]{$-1$} (N2);
+
+            \path (x3) edge[->] node[anchor=south,pos = 0.8]{$1$} (N1);
+            \path (x3) edge[->] node[anchor=south,pos = 0.8]{$-1$} (N2);
+
+            \path (N1) edge[->] node[anchor=south,pos = 0.8]{$1$} (Output);
+            \path (N2) edge[->] node[anchor=south,pos = 0.8]{$1$} (Output);
+        \end{tikzpicture}
+    \end{figure}
     \section{Logistisches Neuron}
     \subsection{}
     \begin{enumerate}[label=(\alph*)]
