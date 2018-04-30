@@ -17,6 +17,8 @@
 \definecolor{mygreen}{RGB}{28,172,0} % color values Red, Green, Blue
 \definecolor{mylilas}{RGB}{170,55,241}
 
+\tikzstyle{neuron}=[circle,fill=black!25,minimum size=30pt,inner sep=0pt]
+
 \lstset{language=Matlab,%
     %basicstyle=\color{red},
     breaklines=true,%
@@ -65,8 +67,6 @@
             \begin{figure}[H]
                 \centering
                 \begin{tikzpicture}
-                    \tikzstyle{neuron}=[circle,fill=black!25,minimum size=24pt,inner sep=0pt]
-
                     \node[anchor=east] (Wetter) at (0,8) {Wetter};
                     \node[anchor=east] (Begleitung) at (0,4) {Begleitung};
                     \node[anchor=east] (Essen) at (0,0) {Essen};
@@ -102,8 +102,6 @@
     \begin{figure}[H]
         \centering
         \begin{tikzpicture}
-            \tikzstyle{neuron}=[circle,fill=black!25,minimum size=24pt,inner sep=0pt]
-
             \node[anchor=east] (Wetter) at (0,8) {Wetter};
             \node[anchor=east] (Begleitung) at (0,4) {Begleitung};
             \node[anchor=east] (Essen) at (0,0) {Essen};
@@ -141,8 +139,6 @@
     \begin{figure}[H]
         \centering
         \begin{tikzpicture}
-            \tikzstyle{neuron}=[circle,fill=black!25,minimum size=24pt,inner sep=0pt]
-
             \node[anchor=east] (x1) at (0,8) {$x_1$};
             \node[anchor=east] (x2) at (0,4) {$x_2$};
             \node[anchor=east] (x3) at (0,0) {$x_3$};
