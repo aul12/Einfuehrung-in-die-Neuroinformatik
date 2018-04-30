@@ -1,0 +1,107 @@
+\documentclass[DIN, pagenumber=false, fontsize=11pt, parskip=half]{scrartcl}
+
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{enumitem}
+\usepackage[utf8]{inputenc} 
+\usepackage[ngerman]{babel} 
+\usepackage[T1]{fontenc} 
+\usepackage{pgfplots}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage{booktabs}
+
+\definecolor{mygreen}{RGB}{28,172,0} % color values Red, Green, Blue
+\definecolor{mylilas}{RGB}{170,55,241}
+
+\lstset{language=Matlab,%
+    %basicstyle=\color{red},
+    breaklines=true,%
+    morekeywords={matlab2tikz},
+    keywordstyle=\color{blue},%
+    morekeywords=[2]{1}, keywordstyle=[2]{\color{black}},
+    identifierstyle=\color{black},%
+    stringstyle=\color{mylilas},
+    commentstyle=\color{mygreen},%
+    showstringspaces=false,%without this there will be a symbol in the places where there is a space
+    numbers=left,%
+    numberstyle={\tiny \color{black}},% size of the numbers
+    numbersep=9pt, % this defines how far the numbers are from the text
+    emph=[1]{for,end,break},emphstyle=[1]\color{red}, %some words to emphasise
+    %emph=[2]{word1,word2}, emphstyle=[2]{style},    
+}
+
+\title{Einführung in die Neuroinformatik}
+\author{Tim Luchterhand, Paul Nykiel}
+
+\begin{document}
+    \maketitle
+    \section{Boole'sche Funktionen}
+    \subsection{Logische Funktionen}
+    \begin{enumerate}[label = (\alph*)]
+        \item AND-Gatter
+            \begin{eqnarray*}
+                w &=& \begin{pmatrix}
+                    1 \\ 1 \\ 1
+                \end{pmatrix} \\
+                \theta &=& 3
+            \end{eqnarray*}
+        \item OR-Gatter
+            \begin{eqnarray*}
+                w &=& \begin{pmatrix}
+                    1 \\ 1 \\ 1
+                \end{pmatrix} \\
+                \theta &=& 1
+            \end{eqnarray*}
+    \end{enumerate}
+    \subsection{Eindeutigkeit}
+    Nein, da der Vektor $w$ und $\theta$ zum Beispiel jeweils mit einem Skalar skaliert werden können.
+    \subsection{Beispiel}
+    \begin{enumerate}[label=(\alph*)]
+        \item @TODO Tikz
+        \item 
+            \begin{eqnarray*}
+                w &=& \begin{pmatrix}
+                    2 \\ 1 \\ 1
+                \end{pmatrix} \\
+                \theta &=& 3
+            \end{eqnarray*}
+    \end{enumerate}
+    \section{Schwellwertneuronen}
+    \subsection{Wahrscheinlickeiten}
+    @TODO Tikz
+    \subsection{Ebene im $\mathbb{R}^3$}
+    \begin{eqnarray*}
+        x_1 + x_2 + x_3 &\stackrel{!}{=}& 1 \\ 
+        \Leftrightarrow x_1 + x_2 + x_3 \stackrel{!}{\geq} 1 &\land& x_1 + x_2 + x_3 \stackrel{!}{\leq} 1\\
+        \Leftrightarrow x_1 + x_2 + x_3 \stackrel{!}{\geq} 1 &\land&  - x_1 - x_2 - x_3 \stackrel{!}{\geq} -1\\
+    \end{eqnarray*}
+    TODO Tikz
+    \section{Logistisches Neuron}
+    \subsection{}
+    \begin{enumerate}[label=(\alph*)]
+        \item Eine Erhöhung von $w_1$ vergrößert die Steigung von $y_1(x)$
+        \item Bei negativem $w_1$ fällt $y_1(x)$ von $1$ auf $0$ ab, bei positivem $w_1$ steigt sie von $0$ auf $1$ an.
+        \item Einfluss von Bias und Gewicht:
+            \begin{table}[H]
+                \centering
+                \begin{tabular}{ccc}
+                    \toprule
+                     & $w_1$ > 0 & $w_1 < 0$ \\
+                     \midrule
+                     $b_1 \uparrow $ & Rechts & Rechts\\
+                     $b_1 \downarrow$ & Links & Links\\
+                     \bottomrule
+                \end{tabular}
+            \end{table}
+    \end{enumerate}
+    \subsection{}
+    Durch Ausprobieren:
+    \begin{eqnarray*}
+        b_1 &=& b_2 = -1 \\
+        w_1 &=& -w_2 = 1 \\
+    \end{eqnarray*}
+\end{document}
