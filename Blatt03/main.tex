@@ -96,7 +96,15 @@
                     -0.36 \\ -0.0041
                 \end{pmatrix}
             \end{equation*}
-        \item dsd %TODO
+        \item $ $
+            \begin{figure}[H]
+                \centering
+                \begin{tikzpicture}
+                    \node at (0,0) {\includegraphics[width=\textwidth]{gradient.png}};
+                    \draw[thick, ->, color=black] (-0.3,3.7) -- (-1.0,3);
+                \end{tikzpicture}
+                \caption{Richtung des Gradienten}
+            \end{figure}
         \item
             \begin{eqnarray*}
                 w(1) &=& w(0) - \eta \cdot \frac{\partial E}{\partial w}(w(0),b(0)) \\
