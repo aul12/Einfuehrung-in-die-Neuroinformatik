@@ -21,6 +21,11 @@ script:
     - mv main.pdf ../output/Blatt03.pdf
     - cd ..
     - zip -j output/Blatt03.zip output/Blatt03.pdf
+    - cd Blatt04
+    - latexmk -pdf main.tex
+    - mv main.pdf ../output/Blatt04.pdf
+    - cd ..
+    - zip -j output/Blatt04.zip output/Blatt04.pdf
 
 deploy:
     provider: pages
