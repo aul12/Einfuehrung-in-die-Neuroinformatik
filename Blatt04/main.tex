@@ -41,4 +41,45 @@
 
 \begin{document}
     \maketitle
+    \section{Lernschritt im Perzeptron-Lernalgorithmus}
+    \begin{enumerate}[label=(\alph*)]
+        \item TODO
+        \item
+            \begin{eqnarray*}
+                w^* &=& \begin{pmatrix}
+                    1 \\ 2\\ -1
+                \end{pmatrix} \\
+                x^* &=& \begin{pmatrix}
+                    2 \\ 2\\ 1
+                \end{pmatrix}
+            \end{eqnarray*}
+        \item TODO
+        \item Überprüfen ob bereits korrekt klassifiziert:
+            \begin{eqnarray*}
+                {(w^*)}^T \cdot x^* &=& 2 + 4 - 1 = 5 \geq 0 \\
+                &\Rightarrow& x^* \in \omega_{1}
+            \end{eqnarray*}
+            Lernschritt durchführen:
+            \begin{eqnarray*}
+                \tilde{w}^* &=& w^* - \nu \cdot x^* = \begin{pmatrix}
+                    -1 \\ 0 \\ -2 
+                \end{pmatrix} \\
+                \Rightarrow \tilde{w} &=& 
+                    \begin{pmatrix}
+                        -1 \\ 0
+                    \end{pmatrix} \\
+                \tilde{x} &=& -2
+            \end{eqnarray*}
+        \item TODO
+        \item Überprüfen ob bereits korrekt klassifiziert:
+            \begin{eqnarray*}
+                {(\tilde{w}^*)}^T \cdot x^*
+                &=& -2 + 0 -2 = -4 \\
+                &\Rightarrow& x^* \in \omega_{-1}
+            \end{eqnarray*}
+            Kein Lernschritt ist notwendig $\Rightarrow w$ wird nicht verändert
+    \end{enumerate}
+    \section{Perzeptron-Lernalgorithmus}
+    Matlab script:
+    \lstinputlisting{b04a02.m}
 \end{document}
