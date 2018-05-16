@@ -48,7 +48,7 @@
             \begin{eqnarray*}
                 w_1 \cdot x_1 + w_2 \cdot x_2 + w_0 &=& 0 \\
                 \Leftrightarrow x_2 &=& -\frac{w_1 \cdot x_1 + w_0}{w_2} \\
-                x_2 &=& -\frac{1}{2} x_1 - \frac{1}{2}
+                x_2 &=& -\frac{1}{2} x_1 + \frac{1}{2}
             \end{eqnarray*}
             \begin{figure}[H]
                 \centering
@@ -59,7 +59,7 @@
                     \draw[thick,latex-latex, color=red, ->] (0,0) -- (1,2) node[anchor=south west] {$w$}; 
                     \fill (2,2) circle [radius=0.08];
                     \draw (2,2) node[anchor=south west] {$x$};
-                    \draw[thick, color=green] (-3,1) -- (3, -2) node[anchor=south west]{Separierungslinie};
+                    \draw[thick, color=green] (-3,2) -- (3, -1) node[anchor=south west]{Separierungslinie};
                 \end{tikzpicture}
             \end{figure}
         \item
@@ -71,7 +71,7 @@
                     2 \\ 2\\ 1
                 \end{pmatrix}
             \end{eqnarray*}
-        \item $ $
+        \item $w_1$ in \textcolor{red}{rot}, $w_{-1}$ in \textcolor{blue}{blau}
             \begin{figure}[H]
                 \centering
                 \begin{tikzpicture}
@@ -81,9 +81,9 @@
                     \draw[thick,latex-latex, color=red, ->] (0,0) -- (1,2) node[anchor=south west] {$w$}; 
                     \fill (2,2) circle [radius=0.08];
                     \draw (2,2) node[anchor=south west] {$x$};
-                    \draw[thick, color=green] (-3,1) -- (3, -2) node[anchor=south west]{Separierungslinie};
-                    \fill[opacity=0.5, color=blue] (-3,1) -- (3,-2) -- (3,3) -- (-3,3) -- cycle;
-                    \fill[opacity=0.5, color=red] (-3,1) -- (3,-2) -- (3,-3) -- (-3,-3) -- cycle;
+                    \draw[thick, color=green] (-3,2) -- (3, -1) node[anchor=south west]{Separierungslinie};
+                    \fill[opacity=0.5, color=red] (-3,2) -- (3,-1) -- (3,3) -- (-3,3) -- cycle;
+                    \fill[opacity=0.5, color=blue] (-3,2) -- (3,-1) -- (3,-3) -- (-3,-3) -- cycle;
                 \end{tikzpicture}
             \end{figure}
         \item Überprüfen ob bereits korrekt klassifiziert:
@@ -93,16 +93,16 @@
             \end{eqnarray*}
             Lernschritt durchführen:
             \begin{eqnarray*}
-                \tilde{w}^* &=& w^* - \nu \cdot x^* = \begin{pmatrix}
+                \tilde{w}^* &=& w^* - \eta \cdot x^* = \begin{pmatrix}
                     -1 \\ 0 \\ -2 
                 \end{pmatrix} \\
                 \Rightarrow \tilde{w} &=& 
                     \begin{pmatrix}
                         -1 \\ 0
                     \end{pmatrix} \\
-                \tilde{x} &=& -2
+                \tilde{w}_0 &=& -2
             \end{eqnarray*}
-        \item $ $
+        \item $w_1$ in \textcolor{red}{rot}, $w_{-1}$ in \textcolor{blue}{blau}
             \begin{figure}[H]
                 \centering
                 \begin{tikzpicture}
@@ -128,4 +128,12 @@
     \section{Perzeptron-Lernalgorithmus}
     Matlab script:
     \lstinputlisting{b04a02.m}
+    \begin{figure}[H]
+        \includegraphics[width=\textwidth]{initial}
+        \caption{Anfangszustand}
+    \end{figure}
+    \begin{figure}[H]
+        \includegraphics[width=\textwidth]{separated}
+        \caption{Separierung nach dem Lernprozess}
+    \end{figure}
 \end{document}

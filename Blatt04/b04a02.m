@@ -58,8 +58,17 @@ while changesInLastIteration > 0
             clf();
             plot(x,y);
             hold on;
-            scatter(data(:,1), data(:,2), [], data(:,3));
+            scatter(data(:,1), data(:,2), [], data(:,3),'filled');
+            xlabel("x_1");
+            ylabel("x_2");
+            title("Punkte in der Ebene und Separierungslinie");
             axis([-6 6 -6 6]);
+            
+            if numberOfOptimizations <= 1
+                print("initial", "-depsc");
+            else
+                print("separated", "-depsc");
+            end
 
             while waitforbuttonpress ~= 1
             end
@@ -70,3 +79,4 @@ end
 
 % Remove unused weight vector entries
 wExtendedMat = wExtendedMat(1:numberOfOptimizations, :);
+L = 0;

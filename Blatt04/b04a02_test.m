@@ -1,4 +1,4 @@
-assert(~verLessThan('matlab', '9.1'), 'Your Matlab version is too old. You must use at least R2016b. Please upgrade your Matlab version');
+%assert(~verLessThan('matlab', '9.1'), 'Your Matlab version is too old. You must use at least R2016b. Please upgrade your Matlab version');
 
 %% Execute the script of the user
 set(0, 'DefaultFigureVisible', 'off');  % Do not show any figures during execution of the test script
