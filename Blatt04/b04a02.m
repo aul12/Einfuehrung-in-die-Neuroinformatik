@@ -50,24 +50,29 @@ while changesInLastIteration > 0
             x = y = 0;
             if w(2) == 0 
                 y = -6:0.1:6;
-                x = -w(3)/w(1);
+                x = -w(3)/w(1) * ones(size(y));
             else
                 x = -6:0.1:6;
                 y = -(w(1)*x + w(3))/w(2);
             end
             clf();
-            plot(x,y);
+            p = plot(x,y);
+            set(p, "linewidth", 1.5, "color", "green");
             hold on;
             scatter(data(:,1), data(:,2), [], data(:,3),'filled');
             xlabel("x_1");
             ylabel("x_2");
             title("Punkte in der Ebene und Separierungslinie");
             axis([-6 6 -6 6]);
+            grid on;
             
-            if numberOfOptimizations <= 1
-                print("initial", "-depsc");
+            if numberOfOptimizations <= 2
+                print("initial", "-depsc", "-color");
+                print(gcf, "initial.epsc");
             else
-                print("separated", "-depsc");
+                print("separated", "-depsc", "-color");
+                print(gcf, "separated.epsc");
+
             end
 
             while waitforbuttonpress ~= 1

@@ -2,7 +2,7 @@
 %%Title: glps_renderer figure
 %%Creator: GL2PS 1.3.8, (C) 1999-2012 C. Geuzaine
 %%For: Octave
-%%CreationDate: Thu May 17 11:12:36 2018
+%%CreationDate: Thu May 17 11:10:38 2018
 %%LanguageLevel: 3
 %%DocumentData: Clean7Bit
 %%Pages: 1
@@ -182,6 +182,13 @@ gsave
 (6) 69.8755 644.6 10 /Helvetica SCR
 (x_1) 298.08 276.519 10 /Helvetica STC
 (x_2) 90 55.8755 468.56 10 /Helvetica SBCR
+1.5 W
+[] 0 setdash
+0 1 0 C
+235.931 292.168 LS
+238.56 298.388 LE
+383.64 641.666 LS
+385.029 644.952 LE
 1 1 1 C
 74.8799 644.6 521.28 292.52 74.8799 292.52 T
 74.8799 644.6 521.28 644.6 521.28 292.52 T
