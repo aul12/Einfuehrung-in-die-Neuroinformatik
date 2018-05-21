@@ -42,4 +42,20 @@
 
 \begin{document}
     \maketitle
+    \section{Backpropagation [Pen and Paper]}
+    \begin{enumerate}
+        \item Forwärts propagieren:
+            \begin{eqnarray*}
+                u_1^{(1)} &=& x_1 \cdot w_{11}^{(1)} + x_2 \cdot w_{21}^{(1)} + b_1^{(1)}\\
+                y_1^{(1)} &=& f_1(u_1^{(1)}) \\
+                u_1^{(2)} &=& y_1^{(1)} \cdot w_{11}^{(2)} + y_2^{(1)} \cdot w_{21}^{(2)} + b_1^{(2)}\\
+                y_1^{(2)} &=& f_2(u_1^{(2)}) 
+            \end{eqnarray*}
+        \item Fehler in der Ausgabeschicht bestimmen:
+            \begin{eqnarray*}
+                \delta_1^{(2)} &=& y_1^({2}) - T_1
+            \end{eqnarray*}
+
+    \end{enumerate}
+    \section{Backpropagation [Matlab]}
 \end{document}
