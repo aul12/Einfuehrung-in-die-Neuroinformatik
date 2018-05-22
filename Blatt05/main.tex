@@ -53,9 +53,18 @@
             \end{eqnarray*}
         \item Fehler in der Ausgabeschicht bestimmen:
             \begin{eqnarray*}
-                \delta_1^{(2)} &=& y_1^({2}) - T_1
+                \delta_1^{(2)} &=& y_1^{(2)} - T_1
             \end{eqnarray*}
-
+        \item Backpropagation
+            \begin{eqnarray*}
+                \delta_1^{(1)} &=& \delta_1^{(2)} w_{11}^{(2)}f'\left(u_i^{(1)}\right)
+            \end{eqnarray*}
+        \item Gewichte adaptieren
+            \begin{equation*}
+                \tilde{w_{11}^{(1)}} &=&  w_{11}^{(1)} + \eta x_1 \delta_1^{(1)}
+            \end{equation*}
     \end{enumerate}
+    
     \section{Backpropagation [Matlab]}
+
 \end{document}
