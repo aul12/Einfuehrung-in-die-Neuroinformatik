@@ -8,7 +8,7 @@ function [weights] = initWeights(inputDimensions, hiddenNeurons, outputDimension
 %   Returns:
 %       - weights: struct with the parameters w1, w2, theta1 and theta2
 %
-    %rng(1337, 'combRecursive');
+    rng(1337, 'combRecursive');
     weights.w1 = rand(hiddenNeurons,inputDimensions) .- 0.5;
     weights.w2 = rand(outputDimensions, hiddenNeurons) .- 0.5;
     weights.theta1 = rand(hiddenNeurons,1) .-0.5;
