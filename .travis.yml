@@ -30,7 +30,7 @@ script:
     - latexmk -pdf main.tex
     - mv main.pdf ../output/Blatt05.pdf
     - cd ..
-    - zip -j output/Blatt05.zip output/Blatt05.pdf Blatt05/b05a02.m Blatt05/initWeights.m Blatt05/train.m Blatt05/forward.m Blatt05/propagateError.m
+    - zip -j output/Blatt05.zip output/Blatt05.pdf Blatt05/b05a02.m Blatt05/initWeights.m Blatt05/train.m Blatt05/forward.m Blatt05/propagateError.m Blatt05/transDiff.m
 
 deploy:
     provider: pages
