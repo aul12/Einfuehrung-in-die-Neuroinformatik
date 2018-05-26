@@ -27,7 +27,7 @@ script:
     - cd ..
     - zip -j output/Blatt04.zip output/Blatt04.pdf Blatt04/b04a02.m
     - cd Blatt05
-    - latexmk -pdf main.tex
+    - latexmk -pdf --shell-escape main.tex
     - mv main.pdf ../output/Blatt05.pdf
     - cd ..
     - zip -j output/Blatt05.zip output/Blatt05.pdf Blatt05/b05a02.m Blatt05/initWeights.m Blatt05/train.m Blatt05/forward.m Blatt05/propagateError.m Blatt05/transDiff.m
