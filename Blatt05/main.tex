@@ -15,14 +15,9 @@
 \usepackage{booktabs}
 \usepackage{tkz-euclide}
 \usepackage{svg}
-\usepackage{newunicodechar}
 
 \definecolor{mygreen}{RGB}{28,172,0} % color values Red, Green, Blue
 \definecolor{mylilas}{RGB}{170,55,241}
-
-\DeclareUnicodeCharacter{3B4}{\ensuremath{\delta}}
-%\newunicodechar{'}{\ensuremath{'}}
-\DeclareUnicodeCharacter{3B7}{\ensuremath{\eta}}
 
 \tikzstyle{neuron}=[circle,fill=black!25,minimum size=30pt,inner sep=0pt]
 
@@ -49,6 +44,13 @@
 \begin{document}
     \maketitle
     \section{Backpropagation [Pen and Paper]}
+    \subsection{}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{Blatt5A1.eps}
+		\caption{Ablauf graphisch dargestellt}
+	\end{figure} 
+    \subsection{}
     \begin{enumerate}
         \item Forwärts propagieren:
             \begin{eqnarray*}
@@ -71,11 +73,6 @@
             \end{equation*}
     \end{enumerate}
     
-	\begin{figure}[H]
-		\centering
-		\includesvg[width=\textwidth]{Blatt5A1}
-		\caption{Ablauf graphisch dargestellt}
-	\end{figure} 
 
     \section{Backpropagation [Matlab]}
     \subsection{}
