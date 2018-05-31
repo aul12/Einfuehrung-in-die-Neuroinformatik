@@ -31,7 +31,12 @@ script:
     - mv main.pdf ../output/Blatt05.pdf
     - cd ..
     - zip -j output/Blatt05.zip output/Blatt05.pdf Blatt05/b05a02.m Blatt05/initWeights.m Blatt05/train.m Blatt05/forward.m Blatt05/propagateError.m Blatt05/transDiff.m
-
+    - cd Blatt06
+    - latexmk -pdf main.tex
+    - mv main.pdf ../output/Blatt06.pdf
+    - cd ..
+    - zip -j output/Blatt06.zip output/Blatt06.pdf
+    
 deploy:
     provider: pages
     skip-cleanup: true
