@@ -112,6 +112,69 @@
 							&=& \dfrac{e^{-c \cdot u_1}}{e^{-c \cdot u_1}} \cdot \frac{e^{c \cdot u_1}}{e^{c \cdot u_1} + e^{c \cdot u_2} + e^{c \cdot u_3}} \\
 							&=& \dfrac{1}{1 + e^{c \cdot (u_2 - u_1)} + e^{c \cdot (u_3 - u_1)}}
 					\end{eqnarray*}
+				\item
+					Fall $u_1 > u_2 > u_3$:
+					\begin{equation*}
+							\lim_{c\rightarrow \infty}y_1 = 1
+					\end{equation*}
+					Fall $u_2 > u_1 > u_3$:
+					\begin{equation*}
+							\lim_{c\rightarrow \infty}y_1 = 0
+					\end{equation*}
+					Fall $u_2 > u_3 > u_1$:
+					\begin{equation*}
+							\lim_{c\rightarrow \infty}y_1 = 0
+					\end{equation*}
+				\item
+					Für $c \rightarrow \infty$ konvergiert die Netzwerkausgabe gegen einen der Trainingsvektoren. D.h. $y_i = 0 \  \forall i \neq k \wedge y_k = 1$
+				\item
+					Fall $c>0$: 
+
+					Alle $y_i$ werden gegenüber dem $y_k$, für welches $u_k > u_i \ \forall i\neq k$ gilt, gedämpft.
+
+					Fall $c < 0$:
+
+					Alle $y_i$ werden gegenüber dem $y_k$, für welches $u_k < u_i \ \forall i\neq k$ gilt, gedämpft.
+
+					Fall $c = 0$:
+
+					Alle $y_i$ haben den gleich Wert $y_i = \frac{1}{n}$
+			\end{enumerate}
+		\item
+			\begin{equation*}
+					E = -t_1 \log(y_1(u_1(w_1), u_2(w_2))) -t_2 \log(y_2(u_1(w_1), u_2(w_2)))
+			\end{equation*}
+			\begin{enumerate}[label=(\alph*)]
+				\item
+					\begin{eqnarray*}
+							\frac{\partial E}{\partial y_1} = -t_1 \cdot \frac{1}{y_1} \\
+							\frac{\partial E}{\partial y_2} = -t_2 \cdot \frac{1}{y_2}
+					\end{eqnarray*}
+				\item
+					\begin{eqnarray*}
+							\frac{\partial y_1}{\partial u_2} &=& \frac{\partial}{\partial u_2}\left( \dfrac{e^{u_1}}{e^{u_1} + e^{u_2}} \right) = 
+							e^{u_1}\left( -\dfrac{e^{u_2}}{(e^{u_1} + e^{u_2})^2} \right) \\
+							&=&-\dfrac{e^{u_1}}{e^{u_1} + e^{u_2}} \cdot \dfrac{e^{u_2}}{e^{u_1} + e^{u_2}} \\
+							&=& -y_1 \cdot y_2 \\
+							\frac{\partial y_2}{\partial u_2} &=& y_2 + e^{u_2} \cdot \left( -\dfrac{e^{u_2}}{(e^{u_1} + e^{u_2})^2}  \right) \\
+							&=& y_2 + \dfrac{e^{u_2}}{e^{u_1} + e^{u_2}} \cdot \left( -\frac{e^{u_2}}{e^{u_1} + e^{u_2}}  \right) \\
+							&=& y_2 + y_2(-y_2) = y_2 (1-y_2)
+					\end{eqnarray*}
+				\item
+					\begin{eqnarray*}
+							u_2 &=& w_2 x + b \\
+							\Rightarrow \frac{\partial u_2}{\partial w_2} &=& x
+					\end{eqnarray*}
+				\item
+					\begin{eqnarray*}
+							\frac{\partial E}{\partial w_2} &=& \frac{\partial E}{\partial y_1} \frac{\partial y_1}{\partial u_2} \frac{\partial u_2}{\partial w_2} + 
+							\frac{\partial E}{\partial y_2} \frac{\partial y_2}{\partial u_2} \frac{\partial u_2}{\partial w_2}  \\
+							&=& \frac{-t_1}{y_1} \cdot (-y_1 y_2) \cdot x + \frac{-t_2}{y_2} \cdot y_2(1-y_2)x \\
+							&=& x \cdot (t_1 y_2 - t_2(1-y_2)) \\
+							&=& x \cdot (y_2 \cdot (t_1 + t_2) - t_2) = x \cdot (y_2 - t_2)
+					\end{eqnarray*}
+				\item
+					@TODO
 			\end{enumerate}
 	\end{enumerate}
 \end{document}
