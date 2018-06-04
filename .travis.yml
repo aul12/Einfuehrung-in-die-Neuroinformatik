@@ -35,7 +35,7 @@ script:
     - latexmk -pdf main.tex
     - mv main.pdf ../output/Blatt06.pdf
     - cd ..
-    - zip -j output/Blatt06.zip output/Blatt06.pdf
+    - zip -j output/Blatt06.zip output/Blatt06.pdf Blatt06/b06a01.m Blatt06/C.m
     
 deploy:
     provider: pages
