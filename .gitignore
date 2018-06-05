@@ -5,3 +5,4 @@
 *.fls
 *.pdf
 */octave-workspace
+*.synctex.gz
