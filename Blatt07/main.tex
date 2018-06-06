@@ -43,138 +43,142 @@
 
 \begin{document}
     \maketitle
-    \section{Cross Entropy}
-    \begin{enumerate}
-		\item @TODO
-		\item War nur ne Leseaufgabe
-		\item
-			\begin{enumerate}[label=(\alph*)]
-				\item
-					\begin{eqnarray*}
-							H_A(B) &=& \sum_x{B(x)\cdot \log_2\left(\frac{1}{A(x)}\right)} \\
-							&=& \frac{1}{2} \log_2(8) + \frac{1}{4} \log_2(2) + \frac{1}{8} \log_2(4) + \frac{1}{8} \log_2(8) \\
-							&=&\frac{19}{8}
-					\end{eqnarray*}
-				\item
-					\begin{eqnarray*}
-							H_B(A) &=& \sum_x{A(x)\cdot \log_2\left(\frac{1}{B(x)}\right)} \\
-							&=& \frac{1}{8} \log_2(2) + \frac{1}{2} \log_2(4) + \frac{1}{4} \log_2(8) + \frac{1}{8} \log_2(8) \\
-							&=&\frac{9}{4}
-					\end{eqnarray*}
-				\item
-					\begin{eqnarray*}
-							H_B(B) &=& \sum_x{B(x)\cdot \log_2\left(\frac{1}{B(x)}\right)} \\
-							&=& \frac{1}{2} \log_2(2) + \frac{1}{4} \log_2(4) + 2 \cdot \frac{1}{8} \log_2(8) \\
-							&=&\frac{7}{4}
-					\end{eqnarray*}
-				\item
-					\begin{eqnarray*}
-							D_A(B) &=& H_A(B) - H(B) = \frac{19}{8} - \frac{7}{4} = \frac{5}{4} \\
-							D_B(B) &=& H_B(B) - H(B) = H(b) - H(B) = 0 \\
-							D_B(A) &=& H_B(A) - H(A) = \frac{9}{4} - \frac{7}{4} = \frac{1}{2} 
-					\end{eqnarray*}
-			\end{enumerate}
-		\item Es gilt:
-			\begin{equation*}
-					D_Q(P) = H_Q(P) - H(P) \geq H(P) - H(P) = 0 \ \forall \ P,Q \in X
-			\end{equation*}
-			denn $H_Q(P)\geq H(P)$ und $H(P) < 0 \ \forall \ P$
+    \section{Learning Slowdown}
+    \subsection{}
+    \begin{enumerate}[label=(\alph*)]
+        \item 
+            \begin{eqnarray*}
+                w_2 &=& 0.6 \\
+                b_2 &=& 0.9 \\
+                T &=& 0 \\
+                \Rightarrow \frac{\partial E}{\partial b_2} (w,b) &=& -2 \left( 0- \frac{1}{1+e^{-1.5}} \right) \frac{1}{1+e^{-1.5}} \left( 1 -\frac{1}{1+e^{-1.5}}\right) \\
+                &\approx& 0.24
+            \end{eqnarray*}
+        \item 
+            \begin{eqnarray*}
+                w_2 &=& 2 \\
+                b_2 &=& 2 \\
+                T &=& 0 \\
+                \Rightarrow \frac{\partial E}{\partial b_2} (w,b) &=& -2 \left( 0- \frac{1}{1+e^{-4}} \right) \frac{1}{1+e^{-4}} \left( 1 -\frac{1}{1+e^{-4}}\right) \\
+                &\approx& 0.035
+            \end{eqnarray*}
+        \item Der Gradient ist sehr klein, wodurch jede Epoche nur minimalen Lernfortschrittt bringt. Problematisch ist hierbei die Ableitung der Sigmoid-Funktion, da $f'(x) \in \left[0, \frac{1}{4}\right]\ \forall x \in \mathbb{R}$, und verschwindet für betragsmäßig große $x$.
+    \end{enumerate}
 
-			Außerdem gilt:
-			\begin{equation*}
-					D_Q(Q) = H_Q(Q) - H(Q) = H(Q) - H(Q) = 0 \ \forall \ Q \in X
-			\end{equation*}
-		\item
-			\begin{enumerate}[label=(\alph*)]
-				\item Das Minnimum muss auftreten, wenn $C=B$
-						\begin{equation*}
-								\Rightarrow t \cdot \frac{3}{4} \overset{!}{=} \frac{1}{2} \Rightarrow t = \frac{2}{3}
-						\end{equation*}
-				\item Hier könnte Ihr Matlabcode stehen
-			\end{enumerate}
-    \end{enumerate} 
-	\section{Cross Entropy als Kostenfunktion}
-	\begin{enumerate}
-		\item
-			\begin{enumerate}[label=(\alph*)]
-				\item
-					\begin{equation*}
-							y_i > 0 \ \forall i \text{, da } e^{c\cdot u_l} > 0 \ \forall c, u_l \in \mathbb{R}
-					\end{equation*}
-					und 
-					\begin{eqnarray*}
-							\sum_{i=1}^{n}{y_i} &=& \sum_{i=1}^{n}{\left( e^{c\cdot u_i} \cdot \dfrac{1}{\sum_{j=1}^{n}{e^{c\cdot u_j}}} \right)} \\
-							&=& \dfrac{\sum_{i=1}^{n}{e^{c\cdot u_i}}} {\sum_{j=1}^{n}{e^{c\cdot u_j}}} = 1
-					\end{eqnarray*}
-				\item
-					\begin{eqnarray*}
-							y_1 &=& \dfrac{e^{c \cdot u_1}}{e^{c \cdot u_1} + e^{c \cdot u_2} + e^{c \cdot u_3}} \\
-							&=& \dfrac{e^{-c \cdot u_1}}{e^{-c \cdot u_1}} \cdot \frac{e^{c \cdot u_1}}{e^{c \cdot u_1} + e^{c \cdot u_2} + e^{c \cdot u_3}} \\
-							&=& \dfrac{1}{1 + e^{c \cdot (u_2 - u_1)} + e^{c \cdot (u_3 - u_1)}}
-					\end{eqnarray*}
-				\item
-					Fall $u_1 > u_2 > u_3$:
-					\begin{equation*}
-							\lim_{c\rightarrow \infty}y_1 = 1
-					\end{equation*}
-					Fall $u_2 > u_1 > u_3$:
-					\begin{equation*}
-							\lim_{c\rightarrow \infty}y_1 = 0
-					\end{equation*}
-					Fall $u_2 > u_3 > u_1$:
-					\begin{equation*}
-							\lim_{c\rightarrow \infty}y_1 = 0
-					\end{equation*}
-				\item
-					Für $c \rightarrow \infty$ konvergiert die Netzwerkausgabe gegen einen der Trainingsvektoren. D.h. $y_i = 0 \  \forall i \neq k \wedge y_k = 1$
-				\item
-					Fall $c>0$: 
+    \subsection{}
+    \begin{enumerate}[label=(\alph*)]
+        \item 
+            \begin{eqnarray*}
+                \frac{\partial E}{\partial b_1} &=& 2 (T-y_2) \cdot (-1) \cdot \frac{\partial y_2}{\partial b_1} \\
+                &=& -2 (T-y_2) \cdot \frac{\partial}{\partial b_1} f(w_2 \cdot f(w_1 \cdot x + b_1) + b_2) \\
+                &=& -2 (T-y_2) \cdot f'(w_2 \cdot f(w_1 \cdot x + b_1) + b_2) \cdot w_2 \cdot f'(w_1 \cdot x + b_1) \\
+                &=& -2 (T-y_2) \cdot f'(u_2) \cdot w_2 \cdot f'(u_1)
+            \end{eqnarray*}
+            Pro weiterer Netzwerkschicht kommen weitere $f'$-Terme hinzu die wiederrum $\in \left[0, \frac{1}{4}\right]$ sind. Dadurch wird der Gradient tendentiell noch kleiner und das Lernen verlangsamt sich zusätzlich zu Neuronen näher zur Eingangsschicht.
+        \item Wie in (a) bereits erläutert, verschlimmern weitere Schichten das Problem.
+        \item In jeder Epoche werden die Gewichte und der Bias nur marginal angepasst wodurch der Gradientenabstieg sehr langsam erfolgt.
+    \end{enumerate}
 
-					Alle $y_i$ werden gegenüber dem $y_k$, für welches $u_k > u_i \ \forall i\neq k$ gilt, gedämpft.
+    \subsection{}
+    \begin{enumerate}[label=(\alph*)]
+        \item 
+            \begin{eqnarray*}
+                x &=& 1 \\
+                T &=& 0 \\
+                w_1 &=& 100 \\
+                b_1 &=& -100 \\
+                w_2 &=& 100 \\
+                b_2 &=& -50 \\
+                u_1 &=& 100 - 100 = 0 \\
+                y_1 &=& f(u_1) = \frac{1}{2} \\
+                u_2 &=& 100 \cdot y_1 - 50 = 0 \\
+                y_2 &=& f(u_2) = \frac{1}{2} \\
+                \frac{\partial E}{\partial b_2} &=& 2 \cdot y_2 \cdot f'(u_2) ) = \frac{1}{4} \\
+                \frac{\partial E}{\partial b_1} &=& \frac{\partial E}{\partial b_2} \cdot 25 = \frac{25}{4} 
+            \end{eqnarray*}
+        \item 
+            Der Gradient der aktuellen Schicht setzt sich aus dem Gradienten der Nachfolgenden Schicht multipliziert mit einem Faktor $\gg1$. Dadurch werden die Gradienten in den Schichten nah am Eingang extrem groß.
+        \item Ein zu großer Gradient kann dazu führen, dass Minima übersprungen werden wodurch der Lernprozess oszilliert und sich das Lernen in die Länge zieht.
+    \end{enumerate}
 
-					Fall $c < 0$:
+    \subsection{}
+    Bei der Cross-Corelation-Funktion tritt immer ein $f'$-Term weniger auf als bei der Sigmoid-Funktion. Das Problem der zu kleinen Gradienten fällt deswegen weniger stark ins Gewicht.
+    \section{Flat vs. Deep Networks}
+    \subsection{}
+    \begin{enumerate}[label=(\alph*)]
+        \item 
+            \begin{eqnarray*}
+                x &=& (0,0)\\
+                y &=& (1,1) \\
+                y_1^{(1)} &=& 0\\
+                y_2^{(1)} &=& 0 \\
+                y_1^{(2)} &=& 0\\
+                y_2^{(2)} &=& 0 \\
+                f(x,y) &=& 0 \\
+                {<x,y>}_2 &=& \begin{pmatrix} 0 & 0 \end{pmatrix} \cdot  \begin{pmatrix} 1 \\ 1 \end{pmatrix} \mod 2 = 0
+            \end{eqnarray*}
+        \item Die Neuronen in der ersten Schicht fungieren als AND-Gatter und berechnen das Skalarprodukt. Die Neuronen in der zweiten Schicht bilden zusammen ein XOR-Gatter und führen die Modulo-Operation durch.
+        \item  $ $
+            \begin{figure}[H]
+                \centering
+                \begin{tikzpicture}
+                    \node[anchor=east] (x1) at (0,12) {$x_1$};
+                    \node[anchor=east] (x2) at (0,10) {$x_2$};
+                    \node[anchor=east] (x3) at (0,8) {$x_3$};
+                    \node[anchor=east] (y1) at (0,4) {$y_1$};
+                    \node[anchor=east] (y2) at (0,2) {$y_2$};
+                    \node[anchor=east] (y3) at (0,0) {$y_3$};
 
-					Alle $y_i$ werden gegenüber dem $y_k$, für welches $u_k < u_i \ \forall i\neq k$ gilt, gedämpft.
+                    \node[neuron] (s1) at (3,10) {$2$};
+                    \node[neuron] (s2) at (3,6) {$2$};
+                    \node[neuron] (s3) at (3,2) {$2$};
 
-					Fall $c = 0$:
+                    \node[neuron] (c1) at (8,10) {$1$};
+                    \node[neuron] (c2) at (8,6) {$2$};
+                    \node[neuron] (c3) at (8,2) {$3$};
 
-					Alle $y_i$ haben den gleich Wert $y_i = \frac{1}{n}$
-			\end{enumerate}
-		\item
-			\begin{equation*}
-					E = -t_1 \log(y_1(u_1(w_1), u_2(w_2))) -t_2 \log(y_2(u_1(w_1), u_2(w_2)))
-			\end{equation*}
-			\begin{enumerate}[label=(\alph*)]
-				\item
-					\begin{eqnarray*}
-							\frac{\partial E}{\partial y_1} = -t_1 \cdot \frac{1}{y_1} \\
-							\frac{\partial E}{\partial y_2} = -t_2 \cdot \frac{1}{y_2}
-					\end{eqnarray*}
-				\item
-					\begin{eqnarray*}
-							\frac{\partial y_1}{\partial u_2} &=& \frac{\partial}{\partial u_2}\left( \dfrac{e^{u_1}}{e^{u_1} + e^{u_2}} \right) = 
-							e^{u_1}\left( -\dfrac{e^{u_2}}{(e^{u_1} + e^{u_2})^2} \right) \\
-							&=&-\dfrac{e^{u_1}}{e^{u_1} + e^{u_2}} \cdot \dfrac{e^{u_2}}{e^{u_1} + e^{u_2}} \\
-							&=& -y_1 \cdot y_2 \\
-							\frac{\partial y_2}{\partial u_2} &=& y_2 + e^{u_2} \cdot \left( -\dfrac{e^{u_2}}{(e^{u_1} + e^{u_2})^2}  \right) \\
-							&=& y_2 + \dfrac{e^{u_2}}{e^{u_1} + e^{u_2}} \cdot \left( -\frac{e^{u_2}}{e^{u_1} + e^{u_2}}  \right) \\
-							&=& y_2 + y_2(-y_2) = y_2 (1-y_2)
-					\end{eqnarray*}
-				\item
-					\begin{eqnarray*}
-							u_2 &=& w_2 x + b \\
-							\Rightarrow \frac{\partial u_2}{\partial w_2} &=& x
-					\end{eqnarray*}
-				\item
-					\begin{eqnarray*}
-							\frac{\partial E}{\partial w_2} &=& \frac{\partial E}{\partial y_1} \frac{\partial y_1}{\partial u_2} \frac{\partial u_2}{\partial w_2} + 
-							\frac{\partial E}{\partial y_2} \frac{\partial y_2}{\partial u_2} \frac{\partial u_2}{\partial w_2}  \\
-							&=& \frac{-t_1}{y_1} \cdot (-y_1 y_2) \cdot x + \frac{-t_2}{y_2} \cdot y_2(1-y_2)x \\
-							&=& x \cdot (t_1 y_2 - t_2(1-y_2)) \\
-							&=& x \cdot (y_2 \cdot (t_1 + t_2) - t_2) = x \cdot (y_2 - t_2)
-					\end{eqnarray*}
-				\item
-					@TODO
-			\end{enumerate}
-	\end{enumerate}
+                    \node[neuron] (c) at (13,6) {$1$};
+
+                    \node[anchor=west] (o) at (14,6) {$f(x,y)$};
+
+
+                    \path (x1) edge[->] node[anchor=south, pos=0.8]{$1$} (s1);
+                    \path (y1) edge[->] node[anchor=south, pos=0.8]{$1$} (s1);
+                    \path (x2) edge[->] node[anchor=south, pos=0.8]{$1$} (s2);
+                    \path (y2) edge[->] node[anchor=south, pos=0.8]{$1$} (s2);
+                    \path (x3) edge[->] node[anchor=south, pos=0.8]{$1$} (s3);
+                    \path (y3) edge[->] node[anchor=south, pos=0.8]{$1$} (s3);
+
+                    \path (s1) edge[->] node[anchor=south, pos=0.8]{$1$} (c1);
+                    \path (s2) edge[->] node[anchor=south, pos=0.8]{$1$} (c1);
+                    \path (s3) edge[->] node[anchor=south, pos=0.8]{$1$} (c1);
+                    \path (s1) edge[->] node[anchor=south, pos=0.8]{$1$} (c2);
+                    \path (s2) edge[->] node[anchor=south, pos=0.8]{$1$} (c2);
+                    \path (s3) edge[->] node[anchor=south, pos=0.8]{$1$} (c2);
+                    \path (s1) edge[->] node[anchor=south, pos=0.8]{$1$} (c3);
+                    \path (s2) edge[->] node[anchor=south, pos=0.8]{$1$} (c3);
+                    \path (s3) edge[->] node[anchor=south, pos=0.8]{$1$} (c3);
+
+                    \path (c1) edge[->] node[anchor=south, pos=0.8]{$1$} (c);
+                    \path (c2) edge[->] node[anchor=south, pos=0.8]{$-1$} (c);
+                    \path (c3) edge[->] node[anchor=south, pos=0.8]{$1$} (c);
+
+                    \path (c) edge[->] node[anchor=south, pos=0.8]{} (o);
+                \end{tikzpicture}
+            \end{figure}
+    \end{enumerate}
+
+    \subsection{}
+    \begin{enumerate}[label=(\alph*)]
+        \item Für das Gradientenabstiegsverfahren sind differenzierbare Funktionen $f$ notwendig, die Sprunfunktion ist nicht differentierbar.
+        \item $ $ \lstinputlisting[lastline=18]{b07a02.m}
+        \item $ $ \lstinputlisting{trainNetworks.m}
+        \item $ $ \lstinputlisting[firstline=18, firstnumber=18]{b07a02.m}
+        \item $ $
+            \begin{figure}[H]
+                \centering
+                \includegraphics[width=\textwidth]{b07a02.eps}
+                \caption{Verlauf der Fehlerfunktion}
+            \end{figure}
+    \end{enumerate}
 \end{document}
