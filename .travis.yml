@@ -41,6 +41,11 @@ script:
     - mv main.pdf ../output/Blatt07.pdf
     - cd ..
     - zip -j output/Blatt07.zip output/Blatt07.pdf Blatt07/b07a02.m Blatt07/trainNetworks.m
+    - cd Blatt08
+    - latexmk -pdf main.tex
+    - mv main.pdf ../output/Blatt08.pdf
+    - cd ..
+    - zip -j output/Blatt08.zip output/Blatt08.pdf Blatt07/b08a02.m Blatt07/networkRegression.m
     
 deploy:
     provider: pages
