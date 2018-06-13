@@ -45,7 +45,7 @@ script:
     - latexmk -pdf main.tex
     - mv main.pdf ../output/Blatt08.pdf
     - cd ..
-    - zip -j output/Blatt08.zip output/Blatt08.pdf Blatt07/b08a02.m Blatt07/networkRegression.m
+    - zip -j output/Blatt08.zip output/Blatt08.pdf Blatt08/b08a02.m Blatt08/networkRegression.m
     
 deploy:
     provider: pages
