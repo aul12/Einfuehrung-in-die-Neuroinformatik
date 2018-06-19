@@ -19,3 +19,5 @@ Lösungen zu den Übungsblättern der Vorlesung "Einführung in die Neuroinforma
  * [Blatt07.zip](https://aul12.github.io/Einfuehrung-in-die-Neuroinformatik/Blatt07.zip)
  * [Blatt08.pdf](https://aul12.github.io/Einfuehrung-in-die-Neuroinformatik/Blatt08.pdf)
  * [Blatt08.zip](https://aul12.github.io/Einfuehrung-in-die-Neuroinformatik/Blatt08.zip)
+ * [Blatt09.pdf](https://aul12.github.io/Einfuehrung-in-die-Neuroinformatik/Blatt09.pdf)
+ * [Blatt09.zip](https://aul12.github.io/Einfuehrung-in-die-Neuroinformatik/Blatt09.zip)
