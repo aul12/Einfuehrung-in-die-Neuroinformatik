@@ -129,12 +129,12 @@
                     Auch bei den Gradienten ist die Varianz im Falle der SELU-Aktivierung deutlich größer, bei allen anderen Aktivierungsfunktionen ist die Varianz des Gradienten sehr klein, bleibt aber über alle Layer hinweg relativ konstant. Bei der SELU-Funktion nimmt die Varianz der Gradienten über die Layer hinweg ab, ebenso der Mittelwert.
                 \item Bei der Verteilung der Netzwerk-Aktivität ist der Mittelwert mit ReLU bzw. ELU Aktivierung in den ersten Layern positiv. Bei der Aktivierung mit $\tanh$ bzw. SELU ist der Mittelwert über alle Layer quasi $0$.
 
-                    Bei der Verteilung des Gradienten lässt sich kein Unterschied erkennen. Die einzige Ausnahme bildet die Verteilung der Gradienten des Netzwerks mit SELU-Aktivierung hier wird der Mittelwert des Gradienten für weiter hinten gelegene Layer kleinie Verteilung der Gradienten des Netzwerks mit SELU-Aktivierung hier wird der Mittelwert des Gradienten für weiter hinten gelegene Layer kleiner.
+                    Bei der Verteilung des Gradienten lässt sich kein Unterschied erkennen. Die einzige Ausnahme bildet die Verteilung der Gradienten des Netzwerks mit SELU-Aktivierung. Hier wird der Mittelwert des Gradienten für weiter hinten gelegene Layer kleiner.
                 \item TODO
-                \item In der ersten Epoche wird durch die SELU-Aktivierung am meisten gelernt. Der Betragsmäßige-Erwartungswert des Gradienten ist in allen Layer größer als bei den anderen Aktivierungsfunktionen, dadurch werden die Gewichte am stärksten adaptiert.allen Layer größer als bei den anderen Aktivierungsfunktionen, dadurch werden die Gewichte am stärksten adaptiert.
+                \item In der ersten Epoche wird durch die SELU-Aktivierung am meisten gelernt. Der betragsmäßige Erwartungswert des Gradienten ist in allen Layer größer als bei den anderen Aktivierungsfunktionen, dadurch werden die Gewichte am stärksten adaptiert.
             \end{enumerate}
         \item 
-            Das Histogramm der Aktivierungen mit $\tanh$ sind symmetrisch. Die Varianz nimmt für weiter hinten gelegene Schichten im Netz ab. Die ELU-Funktion verhält sich sehr ähnlich.
+            Die Histogramme der Aktivierungen mit $\tanh$ sind symmetrisch. Die Varianz nimmt für weiter hinten gelegene Schichten im Netz ab. Die ELU-Funktion verhält sich sehr ähnlich.
 
             Für die ReLU-Aktivierung ist zu sehen, dass kein Layer einen negativen Ausgangswert hat. Im Vergleich zur $\tanh$-Funktion ist die Varianz deutlich kleiner und nimmt über ab.
 
