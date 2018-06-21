@@ -89,7 +89,8 @@
                 \item Für $l \to \infty$ sollen die Gewichte gegen feste Werte konvergieren. Das heißt auch der Erwartungswert und die Varianz müssen gegen konvergieren. Das heißt für $l \to \infty$ müssen die Differenzen $\abs{\mu_l - \mu_{l+1}}$ und $\abs{\sigma_l - \sigma_{l+1}}$ gegen $0$ konvergieren (Konvergenz nach Cauchy).
 
                     Wenn die Parameter der Verteilung so variieren, dauert es demzufolge lange bis die Gewichte konvergieren und das Training dauert lange.
-                \item TODO
+                \item Die Verteilung der positiven dendritischen Potentiale bleibt durch SELU weitestgehend unverändert. Die negativen Werte werden in ihrer Verteilung jedoch stark gestaucht. Dadurch gibt es kaum noch extreme negative Werte, sondern viele, betragsmäßig kleine negative Werte.
+                    Durch die Stauchung wird das Histogramm schmaler und die Varianz dadurch kleiner. Außerdem reduziert sich der Erwartungswert, da es weniger extreme negative Werte gibt.
             \end{enumerate}
     \end{enumerate}
 
@@ -130,7 +131,13 @@
                 \item Bei der Verteilung der Netzwerk-Aktivität ist der Mittelwert mit ReLU bzw. ELU Aktivierung in den ersten Layern positiv. Bei der Aktivierung mit $\tanh$ bzw. SELU ist der Mittelwert über alle Layer quasi $0$.
 
                     Bei der Verteilung des Gradienten lässt sich kein Unterschied erkennen. Die einzige Ausnahme bildet die Verteilung der Gradienten des Netzwerks mit SELU-Aktivierung. Hier wird der Mittelwert des Gradienten für weiter hinten gelegene Layer kleiner.
-                \item TODO
+                \item Wie in Grafik \ref{fig:elu} zu erkennen, ist $\tanh$ breiter verteilt, als ELU und RELU. Gerade bei letzterer ist dies deutlich zu sehen. $\tanh$ erzeugt also betragsmäßig größere Gradienten, wodurch \textit{learning slowdown} weniger stark auftritt.
+                    \begin{figure}[H]
+                        \centering
+                        \includesvg[width=\textwidth]{chart}
+                        \caption{}
+                        \label{fig:elu}
+                    \end{figure}
                 \item In der ersten Epoche wird durch die SELU-Aktivierung am meisten gelernt. Der betragsmäßige Erwartungswert des Gradienten ist in allen Layer größer als bei den anderen Aktivierungsfunktionen, dadurch werden die Gewichte am stärksten adaptiert.
             \end{enumerate}
         \item 
