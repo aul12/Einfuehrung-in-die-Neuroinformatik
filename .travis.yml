@@ -47,7 +47,7 @@ script:
     - cd ..
     - zip -j output/Blatt08.zip output/Blatt08.pdf Blatt08/b08a02.m Blatt08/networkRegression.m
     - cd Blatt09
-    - latexmk -pdf main.tex
+    - latexmk -pdf --shell-escape main.tex
     - mv main.pdf ../output/Blatt09.pdf
     - cd ..
     - zip -j output/Blatt09.zip output/Blatt09.pdf 
