@@ -6,3 +6,4 @@
 *.pdf
 */octave-workspace
 *.synctex.gz
+*.pdf_tex
