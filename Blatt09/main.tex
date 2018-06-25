@@ -73,8 +73,10 @@
                         \includegraphics[width=.5\textwidth]{tanh_grad.eps}
                         \caption{Vorzeichen des Gradienten mit Tanh-Aktivierung}
                     \end{figure}
-                \item TODO
+                \item Wenn eines der Ausgangsneuronen einen betragsmäßig kleinen Fehler hat, so kann es passieren, dass bei der Sigmoid-Funktion der Gradient des anderen Neurons und damit
+                    sein Vorzeichen dominiert. Dadurch würde der Erwartungswert verschoben werden.
 
+                    Bei der Tanh-Funktion ist dies weniger problematisch, da das Vorzeichen des Gradienten nicht nur vom Fehler $\delta$ abhängt.
             \end{enumerate}
     \end{enumerate}
 
