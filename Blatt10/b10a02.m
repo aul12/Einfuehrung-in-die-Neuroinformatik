@@ -13,8 +13,6 @@ b2 = netDropout.Layers(5).Bias;
 W3 = netDropout.Layers(8).Weights;
 b3 = netDropout.Layers(8).Bias;
 
-p = 0.1;
-
 Y = zeros(1000, size(x,2));
 
 for c=1:1000
@@ -40,6 +38,7 @@ plot(x, means);
 plot(x, means+stds);
 plot(x, means-stds);
 
+print("b10a02.eps", "-depsc");
 
 function y= leakyRelu(x)
     if x>0
