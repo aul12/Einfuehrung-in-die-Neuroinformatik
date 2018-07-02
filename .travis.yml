@@ -51,7 +51,7 @@ script:
     - mv main.pdf ../output/Blatt09.pdf
     - cd ..
     - zip -j output/Blatt09.zip output/Blatt09.pdf 
-    - cd Blatt19
+    - cd Blatt10
     - latexmk -pdf --shell-escape main.tex
     - mv main.pdf ../output/Blatt10.pdf
     - cd ..
