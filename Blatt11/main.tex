@@ -75,4 +75,38 @@
     \subsection{}
     Die Nachbarschaftserhaltung ist eine allgemeine Eigenschaft des Algorithmus, da letzendlich versucht wird, ein Gitter wie aus $\{g_1, \ldots, g_n\}$ 
     geschickt in die Datenpunkte zu legen.
+
+    \subsection{}
+    Zu Beginn des Lernvorgangs liegen die Prototypen größtenteils ungünstig in den Datenpunkte verteilt, es müssen größere Anpassungen vorgenommen werden.
+    Deshalb ist die generelle Lernrate $\eta$ anfangs hoch. Gleiches gilt für den Nachbarschaftsweitenparameter $\sigma$. Beide Parameter nehmen mit der
+    Zeit ab, damit gegen Ende nur noch kleine Anpassungen vorgenommen werden, um Konvergenz zu ermöglichen. Der Unterschied zwischen beiden Parametern ist,
+    dass $\eta$ den gesamten Lernvorgang auf Dauer abklingen lässt, während $\sigma$ dafür sorgt, dass für große $t$ die Anpassung für alle Prototypen
+    außer dem Winner-Prototypen vernachlässigbar klein ist.
+
+    \subsection{}
+    \begin{enumerate}[label=\alph*)]
+        \item  
+            \begin{equation*}
+                \norm{c_1 - c_2} = \norm{ \begin{pmatrix} 8.17 \\ 2.06\end{pmatrix} - \begin{pmatrix} 5.48 \\ 8.14\end{pmatrix}} = 6.65
+            \end{equation*}
+        \item Die Kantengewichte im Gitter sind ein ungefähres Ma\ss{} für die Abstände der Datencluster, also ein Ma\ss{} wie sehr sich die identifiezierten Klassen unterscheiden.
+    \end{enumerate}
+
+    \section{Kohonen-Karten als Visualisierungsinstrument}
+    \lstinputlisting{b11a02.m}
+    \begin{figure}
+        \centering
+        \includegraphics[width=\textwidth]{pclass.eps}
+        \caption{Ticketklasse}
+    \end{figure}
+    \begin{figure}
+        \centering
+        \includegraphics[width=\textwidth]{sex.eps}
+        \caption{Geschlecht}
+    \end{figure}
+    \begin{figure}
+        \centering
+        \includegraphics[width=\textwidth]{age.eps}
+        \caption{Alter}
+    \end{figure}
 \end{document}

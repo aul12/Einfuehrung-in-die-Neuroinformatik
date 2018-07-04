@@ -1,31 +1,44 @@
 %% SOM network
 rng(1337, 'combRecursive');
 % TODO: train the network and process the result
+load('titanic.mat');
+maxVals = max(data);
+minVals = min(data);
+
+titanicNormalized = (data - minVals)./(maxVals - minVals);
+
+%net = selforgmap([30 30], 400, 3, 'gridtop');
 
 % Before you train the network, initialize the weights with the provided initialization data
-net = configure(net, data');
+%net = configure(net, data');
 load('weights.mat');
-net.IW{1} = initWeights;
+%net.IW{1} = initWeights;
+
+%net = train(net,transpose(titanicNormalized));
+
+prototypes = net.IW{1} .* (maxVals - minVals)  + minVals;
+maps = permute(reshape(prototypes, [30 30 7]), [2,1,3]);
+
+out = net(transpose(titanicNormalized));
+count = sum(transpose(out));
+hits = transpose(reshape(count, [30 30]));
+
+mapSurvived = round(maps(:,:,1));
+mapSurvived(find(mapSurvived < 0)) = 0;
+mapSurvived(find(mapSurvived > 1)) = 1;
+
 
 %% Plot some features (two examples are shown)
-figure;
+for feature=1:length(featureNames)
+    figure;
+    [ax1, ax2] = mapPlot(maps(:, :, feature), hits, mapSurvived);
 
-% Class
-mapClass = round(maps(:, :, 2));
-mapClass(mapClass < 1) = 1;
-mapClass(mapClass > 3) = 3;
-[ax1, ax2] = mapPlot(mapClass, hits, mapSurvived);
-title(ax1, 'Class');    % Use ax1 to set the title
-colorbar(ax2, 'Position', [0.88 0.11 0.0275 0.815], 'Ticks', [1 2 3], 'TickLabels', {'1st', '2nd', '3rd'}); % Use ax2 to set the colorbar
+    title(ax1, featureNames(feature));
+    colorbar(ax2, 'Position', [0.88 0.11 0.0275 0.815]);
+    print(featureNames(feature) + ".eps", "-depsc");
+end
 
-% Age
-figure;
-[ax1, ax2] = mapPlot(maps(:, :, 4), hits, mapSurvived);
 
-title(ax1, 'Age');
-colorbar(ax2, 'Position', [0.88 0.11 0.0275 0.815]);
-
-% TODO: add your own features
 
 %%
 function [ax1, ax2] = mapPlot(map, hits, mapSurvived)
