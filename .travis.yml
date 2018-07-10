@@ -61,7 +61,12 @@ script:
     - mv main.pdf ../output/Blatt11.pdf
     - cd ..
     - zip -j output/Blatt11.zip output/Blatt11.pdf Blatt11/b11a02.m Blatt11/survived.eps Blatt11/pclass.eps Blatt11/sex.eps Blatt11/age.eps Blatt11/sibsp.eps Blatt11/parch.eps Blatt11/fare.eps
-    
+    - cd Blatt12
+    - latexmk -pdf --shell-escape main.tex
+    - mv main.pdf ../output/Blatt12.pdf
+    - cd ..
+    - zip -j output/Blatt12.zip output/Blatt12.pdf Blatt12/b12a01.m Blatt12/b12a02.m 
+
 deploy:
     provider: pages
     skip-cleanup: true
